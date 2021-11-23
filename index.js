@@ -3,6 +3,7 @@ const express = require('express')
 
 var cors = require('cors')
 const app = express()
+app.listen(3000);
 const request = require('request');
 const fs = require('fs');
 const schedule = require('node-schedule');
@@ -19,7 +20,6 @@ const job = schedule.scheduleJob(spec, function() {
 });
 
 app.use(express.json());
-app.set('port',3000);
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
