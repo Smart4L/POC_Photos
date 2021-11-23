@@ -1,5 +1,6 @@
 const express = require('express')
-express.listen(3000)
+
+
 var cors = require('cors')
 const app = express()
 const request = require('request');
@@ -18,8 +19,10 @@ const job = schedule.scheduleJob(spec, function() {
 });
 
 app.use(express.json());
+app.listen(3000)
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
+
 
 app.get('/interval', (req,res) => {
   res.status(200).json(num);
