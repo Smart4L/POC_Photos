@@ -43,7 +43,7 @@ app.get('/photos', async (req,res) => {
     let date = new Date();
     let filename = "4L-" + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + ".jpeg";
     
-        const data = await download('http://172.24.1.2:8080/stream/snapshot.jpeg?delay_s=0', `./images/${filename}`);
+        const data = await download('http://172.24.1.2:8080/stream/snapshot.jpeg?delay_s=0', `/photos/${filename}`);
   
     res.status(200).send("OK")
 })
