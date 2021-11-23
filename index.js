@@ -12,7 +12,7 @@ const job = schedule.scheduleJob(spec, function() {
     let date = new Date();
     console.log(spec);
     let filename = "4L-" + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + ".jpeg";
-        const data = await download('http://172.24.1.2:8080/stream/snapshot.jpeg?delay_s=0', `./images_auto/${filename}`);
+        const data = await download('http://172.24.1.2:8080/stream/snapshot.jpeg?delay_s=0', `/photos/${filename}`);
 })();
 });
 
