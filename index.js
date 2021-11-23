@@ -3,7 +3,6 @@ const express = require('express')
 
 var cors = require('cors')
 const app = express()
-app.listen(3000);
 const request = require('request');
 const fs = require('fs');
 const schedule = require('node-schedule');
