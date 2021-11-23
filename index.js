@@ -19,7 +19,7 @@ const job = schedule.scheduleJob(spec, function() {
 });
 
 app.use(express.json());
-app.listen(3000)
+app.set('port',3000);
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
