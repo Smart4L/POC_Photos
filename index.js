@@ -70,6 +70,7 @@ app.listen(8080, () => {
     var dt = new Date();
     var date = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
   
+    var dir = "/photos/" + date
 
     if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
