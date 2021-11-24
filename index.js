@@ -1,6 +1,5 @@
 const express = require('express')
 
-
 var cors = require('cors')
 const app = express()
 const request = require('request');
@@ -14,7 +13,7 @@ const job = schedule.scheduleJob(spec, function() {
     let date = new Date();
     console.log(spec);
     let filename = "4L-" + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + ".jpeg";
-        const data = await download('http://172.24.1.2:3000/stream/snapshot.jpeg?delay_s=0', `/photos/${filename}`);
+        const data = await download('http://172.24.1.2:3000/stream/snapshot.jpeg?delay_s=0', `${filename}`);
 })();
 });
 
@@ -46,7 +45,7 @@ app.get('/photos', async (req,res) => {
     let date = new Date();
     let filename = "4L-" + date.getDate() + "-" + (date.getMonth() + 1) + "-" + date.getFullYear() + "-" + date.getHours() + "-" + date.getMinutes() + "-" + date.getSeconds() + ".jpeg";
     
-        const data = await download('http://172.24.1.2:3000/stream/snapshot.jpeg?delay_s=0', `/photos/${filename}`);
+        const data = await download('http://172.24.1.2:3000/stream/snapshot.jpeg?delay_s=0', `${filename}`);
   
     res.status(200).send("OK")
 })
@@ -68,7 +67,16 @@ app.listen(8080, () => {
   async function download(url, dest) {
 
     /* Create an empty file where we can save data */
-    const file = fs.createWriteStream(dest);
+    var dt = new Date();
+    var date = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+    
+    var dir = dest + date
+
+    if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+    }
+    
+    const file = fs.createWriteStream('/photos/'+  dest);
 
     /* Using Promises so that we can use the ASYNC AWAIT syntax */
     await new Promise((resolve, reject) => {
