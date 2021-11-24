@@ -69,14 +69,13 @@ app.listen(8080, () => {
     /* Create an empty file where we can save data */
     var dt = new Date();
     var date = dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
-    
-    var dir = dest + date
+  
 
     if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
     }
     
-    const file = fs.createWriteStream('/photos/'+  dest);
+    const file = fs.createWriteStream('/photos/'+ date + '/' + dest);
 
     /* Using Promises so that we can use the ASYNC AWAIT syntax */
     await new Promise((resolve, reject) => {
